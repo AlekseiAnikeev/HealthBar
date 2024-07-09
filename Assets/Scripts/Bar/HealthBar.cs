@@ -1,28 +1,25 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Bar
 {
-    public class HealthBar : MonoBehaviour
+    public class HealthBar : HealthBarText
     {
         [SerializeField] private Slider _slider;
-        [SerializeField] private TextMeshProUGUI _text;
-    
-        private float _maxHealth;
 
-        public void SetMaxHealth(float maxHealth)
+        private void Start()
         {
-            _maxHealth = maxHealth;
-            _slider.maxValue = maxHealth;
-            _slider.value = maxHealth;
-            _text.text = $"{maxHealth}/{maxHealth}";
+            _maxHealth = _character.CurrentHealth;
+            _slider.maxValue = _maxHealth;
+            _slider.value = _maxHealth;
+            _text.text = $"{_maxHealth}/{_maxHealth}";
         }
 
-        public void SetHealth(float health)
+        protected override void SetHealth()
         {
-            _slider.value = health;
-            _text.text = $"{health}/{_maxHealth}";
+            _slider.value = _character.CurrentHealth;
+            
+            base.SetHealth();
         }
     }
 }

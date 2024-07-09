@@ -5,19 +5,30 @@ namespace Bar
 {
     public class HealthBarText : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] protected TextMeshProUGUI _text;
+        [SerializeField] protected Character _character;
     
-        private float _maxHealth;
+        protected float _maxHealth;
 
-        public void SetMaxHealth(float maxHealth)
+        private void Start()
         {
-            _maxHealth = maxHealth;
-            _text.text = $"{maxHealth}/{maxHealth}";
+            _maxHealth = _character.CurrentHealth;
+            _text.text = $"{_maxHealth}/{_maxHealth}";
+        }
+        
+        protected void OnEnable()
+        {
+            _character.HasChanged += SetHealth;
         }
 
-        public void SetHealth(float health)
+        protected void OnDisable()
         {
-            _text.text = $"{health}/{_maxHealth}";
+            _character.HasChanged -= SetHealth;
+        }
+
+        protected virtual void SetHealth()
+        {
+            _text.text = $"{_character.CurrentHealth}/{_maxHealth}";
         }
     }
 }

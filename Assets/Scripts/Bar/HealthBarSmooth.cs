@@ -1,36 +1,45 @@
-using TMPro;
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Bar
 {
-    public class HealthBarSmooth : MonoBehaviour
+    public class HealthBarSmooth : HealthBarText
     {
         [SerializeField] private Slider _slider;
-        [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private float _delta = 10f;
     
-        private float _maxHealth;
-        private float _target;
+        private Coroutine _activeCoroutine;
 
-        private void Update()
+        private void Start()
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _target, _delta * Time.deltaTime);
+            _maxHealth = _character.CurrentHealth;;
+            _slider.maxValue = _maxHealth;
+            _slider.value = _maxHealth;
+            _text.text = $"{_maxHealth}/{_maxHealth}";
         }
 
-        public void SetMaxHealth(float maxHealth)
+        protected override void SetHealth()
         {
-            _maxHealth = maxHealth;
-            _slider.maxValue = maxHealth;
-            _slider.value = maxHealth;
-            _target = maxHealth;
-            _text.text = $"{maxHealth}/{maxHealth}";
+            base.SetHealth();
+            
+            if (_activeCoroutine != null)
+                StopCoroutine(_activeCoroutine);
+
+            _activeCoroutine = StartCoroutine(DrawFillingOfSlider());
         }
 
-        public void SetHealth(float health)
+        private IEnumerator DrawFillingOfSlider()
         {
-            _target = health;
-            _text.text = $"{health}/{_maxHealth}";
+            float accuracy = 0.00001f;
+
+            while (Math.Abs(_slider.value - _character.CurrentHealth) > accuracy)
+            {
+                _slider.value = Mathf.MoveTowards(_slider.value, _character.CurrentHealth, _delta * Time.deltaTime);
+                
+                yield return null;
+            }
         }
     }
 }
