@@ -103,10 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f4799bd93a64c4aa3d21d3eefd1787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 2074567370778167287}
-  _character: {fileID: 0}
+  _entity: {fileID: 0}
   _slider: {fileID: 3236694448468890315}
-  _delta: 25
+  _text: {fileID: 2074567370778167287}
+  _delta: 0.02
 --- !u!1 &4069464800094820514
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4117804754190616599}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0

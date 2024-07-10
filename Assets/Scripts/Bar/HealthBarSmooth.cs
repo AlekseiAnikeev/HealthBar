@@ -1,43 +1,46 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Bar
 {
-    public class HealthBarSmooth : HealthBarText
+    public class HealthBarSmooth : HealthBar
     {
         [SerializeField] private Slider _slider;
-        [SerializeField] private float _delta = 10f;
-    
+        [SerializeField] protected TextMeshProUGUI _text;
+        [SerializeField] private float _delta = 0.010f;
+
         private Coroutine _activeCoroutine;
+        private float barValue;
 
         private void Start()
         {
-            _maxHealth = _character.CurrentHealth;;
-            _slider.maxValue = _maxHealth;
-            _slider.value = _maxHealth;
-            _text.text = $"{_maxHealth}/{_maxHealth}";
+            _slider.minValue = 0;
+            _slider.maxValue = 1;
         }
 
-        protected override void SetHealth()
+        protected override void SetHealth(float currentHealth)
         {
-            base.SetHealth();
-            
+            float currentValue = currentHealth / _entity.MaxHealth;
+
+            _text.text = $"{currentHealth}/{_entity.MaxHealth}";
+
             if (_activeCoroutine != null)
                 StopCoroutine(_activeCoroutine);
 
-            _activeCoroutine = StartCoroutine(DrawFillingOfSlider());
+            _activeCoroutine = StartCoroutine(DrawFillingOfSlider(currentValue));
         }
 
-        private IEnumerator DrawFillingOfSlider()
+        private IEnumerator DrawFillingOfSlider(float currentHealth)
         {
             float accuracy = 0.00001f;
 
-            while (Math.Abs(_slider.value - _character.CurrentHealth) > accuracy)
+            while (Math.Abs(_slider.value - currentHealth) > accuracy)
             {
-                _slider.value = Mathf.MoveTowards(_slider.value, _character.CurrentHealth, _delta * Time.deltaTime);
-                
+                _slider.value = Mathf.Lerp(_slider.value, currentHealth, _delta);
+
                 yield return null;
             }
         }

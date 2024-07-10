@@ -1208,7 +1208,7 @@ PrefabInstance:
       value: HealthBarSmooth
       objectReference: {fileID: 0}
     - target: {fileID: 6084731311850103259, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
-      propertyPath: _character
+      propertyPath: _entity
       value: 
       objectReference: {fileID: 292064096}
     - target: {fileID: 7296921444077347182, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
@@ -1309,6 +1309,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2155322873893094195, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
+      propertyPath: _entity
+      value: 
+      objectReference: {fileID: 292064096}
+    - target: {fileID: 2155322873893094195, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
       propertyPath: _character
       value: 
       objectReference: {fileID: 292064096}
@@ -1330,16 +1334,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1604724234870961282, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1604724234870961282, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1641216709378277167, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1653579451726458069, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
       propertyPath: m_Pivot.x
@@ -1426,7 +1422,7 @@ PrefabInstance:
       value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 9199259383888003491, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
-      propertyPath: _character
+      propertyPath: _entity
       value: 
       objectReference: {fileID: 292064096}
     m_RemovedComponents: []

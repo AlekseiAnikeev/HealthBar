@@ -1,25 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Bar
 {
-    public class HealthBar : HealthBarText
+    public abstract class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Slider _slider;
+        [SerializeField] protected Entity _entity;
 
-        private void Start()
+        private void OnEnable()
         {
-            _maxHealth = _character.CurrentHealth;
-            _slider.maxValue = _maxHealth;
-            _slider.value = _maxHealth;
-            _text.text = $"{_maxHealth}/{_maxHealth}";
+            _entity.HasChanged += SetHealth;
         }
 
-        protected override void SetHealth()
+        private void OnDisable()
         {
-            _slider.value = _character.CurrentHealth;
-            
-            base.SetHealth();
+            _entity.HasChanged -= SetHealth;
         }
+
+        protected abstract void SetHealth(float currentHealth);
     }
 }
