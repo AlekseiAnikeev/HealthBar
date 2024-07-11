@@ -5,11 +5,11 @@ namespace Bar
 {
     public class HealthBarText : HealthBar
     {
-        [SerializeField] protected TextMeshProUGUI _text;
+        [SerializeField] private TextMeshProUGUI _healthText;
 
         protected override void SetHealth(float currentHealth)
         {
-            _text.text = $"{currentHealth}/{_entity.MaxHealth}";
+            _healthText.text = $"{currentHealth}/{_health.MaxHealth}";
         }
     }
 }

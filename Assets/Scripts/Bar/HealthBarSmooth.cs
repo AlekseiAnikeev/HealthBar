@@ -1,19 +1,13 @@
-using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Bar
 {
-    public class HealthBarSmooth : HealthBar
+    public class HealthBarSmooth : SliderHealthBar
     {
-        [SerializeField] private Slider _slider;
-        [SerializeField] protected TextMeshProUGUI _text;
-        [SerializeField] private float _delta = 0.010f;
+        [SerializeField] private float _delta = 1f;
 
         private Coroutine _activeCoroutine;
-        private float barValue;
 
         private void Start()
         {
@@ -23,9 +17,7 @@ namespace Bar
 
         protected override void SetHealth(float currentHealth)
         {
-            float currentValue = currentHealth / _entity.MaxHealth;
-
-            _text.text = $"{currentHealth}/{_entity.MaxHealth}";
+            float currentValue = currentHealth / _health.MaxHealth;
 
             if (_activeCoroutine != null)
                 StopCoroutine(_activeCoroutine);
@@ -35,14 +27,16 @@ namespace Bar
 
         private IEnumerator DrawFillingOfSlider(float currentHealth)
         {
-            float accuracy = 0.00001f;
+            float barValue = _slider.value;
 
-            while (Math.Abs(_slider.value - currentHealth) > accuracy)
+            for (float i = 0; i < _slider.maxValue; i += Time.deltaTime / _delta)
             {
-                _slider.value = Mathf.Lerp(_slider.value, currentHealth, _delta);
+                _slider.value = Mathf.Lerp(barValue, currentHealth, i);
 
                 yield return null;
             }
+
+            _slider.value = currentHealth;
         }
     }
 }

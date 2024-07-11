@@ -585,6 +585,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &342095870 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 270924471066449350, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
+  m_PrefabInstance: {fileID: 1878102907442168158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1219,19 @@ PrefabInstance:
       value: HealthBarSmooth
       objectReference: {fileID: 0}
     - target: {fileID: 6084731311850103259, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
+      propertyPath: _delay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084731311850103259, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
+      propertyPath: _delta
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6084731311850103259, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
       propertyPath: _entity
+      value: 
+      objectReference: {fileID: 292064096}
+    - target: {fileID: 6084731311850103259, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
+      propertyPath: _health
       value: 
       objectReference: {fileID: 292064096}
     - target: {fileID: 7296921444077347182, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
@@ -1216,7 +1239,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8946886181052633454, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e20f8a4c3518de1448d266beb6d9f77a, type: 3}
@@ -1313,9 +1337,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 292064096}
     - target: {fileID: 2155322873893094195, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 292064096}
+    - target: {fileID: 2155322873893094195, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
       propertyPath: _character
       value: 
       objectReference: {fileID: 292064096}
+    - target: {fileID: 2155322873893094195, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
+      propertyPath: _healthText
+      value: 
+      objectReference: {fileID: 342095870}
     - target: {fileID: 2921558718979894221, guid: f80c825360e1fe6469bfd726f0adc714, type: 3}
       propertyPath: m_Name
       value: HealthBarText
@@ -1425,8 +1457,13 @@ PrefabInstance:
       propertyPath: _entity
       value: 
       objectReference: {fileID: 292064096}
+    - target: {fileID: 9199259383888003491, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 292064096}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8793484232164619032, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6710c4c0b39056b40997092bc22ae6f9, type: 3}

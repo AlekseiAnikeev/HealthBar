@@ -4,16 +4,16 @@ namespace Bar
 {
     public abstract class HealthBar : MonoBehaviour
     {
-        [SerializeField] protected Entity _entity;
+        [SerializeField] protected Health _health;
 
         private void OnEnable()
         {
-            _entity.HasChanged += SetHealth;
+            _health.ValueChanged += SetHealth;
         }
 
         private void OnDisable()
         {
-            _entity.HasChanged -= SetHealth;
+            _health.ValueChanged -= SetHealth;
         }
 
         protected abstract void SetHealth(float currentHealth);
